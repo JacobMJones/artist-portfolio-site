@@ -18,7 +18,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const { name, leftMultiplier, topMultiplier } = this.props
+    const { name, leftMultiplier, topMultiplier } = this.props.data
     const { currentlyShowing, isShowingArt, setFocusedCard } = this.props.state
     return (
       <IndexCard
@@ -33,7 +33,7 @@ class Card extends React.Component {
           currentlyShowing === name
             ? 0.1
             : isShowingArt
-            ? topMultiplier
+            ? topMultiplier 
             : topMultiplier
         }
         width={
@@ -56,10 +56,11 @@ class Card extends React.Component {
           setFocusedCard(name)
         }}
       >
-        {this.props.state.currentlyShowing === this.props.name ||
-          (!this.props.state.isShowingArt && this.props.name)}
+        {currentlyShowing === name || (!isShowingArt && name)}
       </IndexCard>
     )
   }
 }
 export default Card
+
+
