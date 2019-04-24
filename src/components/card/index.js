@@ -6,8 +6,8 @@ const IndexCard = styled.div`
   height: ${props => props.height && `${props.height}`}px;
   opacity: ${props => props.opacity && props.opacity};
   position:absolute;
-  top:${props => props.top && props.top};
-  left:${props => props.left && props.left};
+  top:${props => props.top && `${window.innerHeight * props.top}px`};
+  left:${props => props.left && `${window.innerWidth * props.left}px`};
   transition: all 500ms ease;
   background:${props => props.background && props.background}
 `
@@ -24,17 +24,17 @@ class Card extends React.Component {
       <IndexCard
         left={
           currentlyShowing === name
-            ? `${window.innerWidth * 0.075}px`
+            ? 0.075
             : isShowingArt
-            ? `${window.innerWidth * leftMultiplier}px`
-            : `${window.innerWidth * leftMultiplier}px`
+            ? leftMultiplier
+            : leftMultiplier
         }
         top={
           currentlyShowing === name
-            ? `${window.innerHeight * 0.1}px`
+            ? 0.1
             : isShowingArt
-            ? `${window.innerHeight * topMultiplier}px`
-            : `${window.innerHeight * topMultiplier}px`
+            ? topMultiplier
+            : topMultiplier
         }
         width={
           currentlyShowing === name
